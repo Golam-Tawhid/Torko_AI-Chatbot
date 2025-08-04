@@ -52,6 +52,94 @@
 .message-content {
     word-wrap: break-word;
     line-height: 1.4;
+    text-align: left;
+}
+
+/* Markdown formatting styles */
+.bot-message .message-content h1,
+.bot-message .message-content h2,
+.bot-message .message-content h3,
+.bot-message .message-content h4,
+.bot-message .message-content h5,
+.bot-message .message-content h6 {
+    margin: 0.5em 0 0.3em 0;
+    font-weight: bold;
+}
+
+.bot-message .message-content h1 { font-size: 1.2em; }
+.bot-message .message-content h2 { font-size: 1.15em; }
+.bot-message .message-content h3 { font-size: 1.1em; }
+.bot-message .message-content h4 { font-size: 1.05em; }
+.bot-message .message-content h5 { font-size: 1em; }
+.bot-message .message-content h6 { font-size: 0.95em; }
+
+.bot-message .message-content strong {
+    font-weight: bold;
+    color: #1a1a1a;
+}
+
+.bot-message .message-content em {
+    font-style: italic;
+}
+
+.bot-message .message-content ul,
+.bot-message .message-content ol {
+    margin: 0.5em 0;
+    padding-left: 1.5em;
+}
+
+.bot-message .message-content ul li,
+.bot-message .message-content ol li {
+    margin: 0.2em 0;
+    line-height: 1.4;
+}
+
+.bot-message .message-content ul {
+    list-style-type: disc;
+}
+
+.bot-message .message-content ol {
+    list-style-type: decimal;
+}
+
+.bot-message .message-content code {
+    background-color: #f1f3f4;
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+.bot-message .message-content pre {
+    background-color: #f1f3f4;
+    padding: 0.8em;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 0.5em 0;
+}
+
+.bot-message .message-content pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+.bot-message .message-content blockquote {
+    border-left: 3px solid #ddd;
+    margin: 0.5em 0;
+    padding-left: 1em;
+    color: #666;
+}
+
+.bot-message .message-content p {
+    margin: 0.3em 0;
+}
+
+.bot-message .message-content p:first-child {
+    margin-top: 0;
+}
+
+.bot-message .message-content p:last-child {
+    margin-bottom: 0;
 }
 
 .message-timestamp {

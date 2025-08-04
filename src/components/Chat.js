@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import ReactMarkdown from "react-markdown";
 import "./Chat.css";
 
 const Chat = () => {
@@ -103,7 +104,13 @@ const Chat = () => {
               message.sender === "user" ? "user-message" : "bot-message"
             }`}
           >
-            <div className="message-content">{message.content}</div>
+            <div className="message-content">
+              {message.sender === "user" ? (
+                message.content
+              ) : (
+                <ReactMarkdown>{message.content}</ReactMarkdown>
+              )}
+            </div>
             <div className="message-timestamp">
               {new Date(message.timestamp).toLocaleTimeString()}
             </div>
