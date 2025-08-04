@@ -41,8 +41,3 @@ code {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.5);
 }
-
-/* Smooth transitions for all elements */
-* {
-  transition: all 0.3s ease;
-}

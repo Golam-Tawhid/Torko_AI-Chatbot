@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import ReactMarkdown from "react-markdown";
 import LoadingScreen from "./LoadingScreen";
 import soundManager from "../utils/soundManager";
@@ -15,6 +15,18 @@ const Chat = () => {
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
+  const scrollToBottom = useCallback(() => {
+    // Only scroll if element exists and avoid unnecessary operations
+    const messagesContainer = messagesEndRef.current?.parentElement;
+    if (messagesContainer) {
+      const { scrollTop, scrollHeight, clientHeight } = messagesContainer;
+      // Only scroll if not already at bottom
+      if (scrollHeight - scrollTop - clientHeight > 5) {
+        messagesContainer.scrollTop = scrollHeight;
+      }
+    }
+  }, []);
+
   useEffect(() => {
     // Show loading screen for 2 seconds then create session
     setTimeout(() => {
@@ -27,10 +39,10 @@ const Chat = () => {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [messages, scrollToBottom]);
 
   useEffect(() => {
-    const handleKeyDown = (event) => {
+    const handleGlobalKeyDown = (event) => {
       // Focus input with Ctrl/Cmd + K
       if ((event.ctrlKey || event.metaKey) && event.key === "k") {
         event.preventDefault();
@@ -45,13 +57,9 @@ const Chat = () => {
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
+    document.addEventListener("keydown", handleGlobalKeyDown);
+    return () => document.removeEventListener("keydown", handleGlobalKeyDown);
   }, []);
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
 
   const createNewSession = async () => {
     try {
@@ -71,7 +79,7 @@ const Chat = () => {
     }
   };
 
-  const handleKeyDown = (event) => {
+  const handleInputKeyDown = (event) => {
     if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault();
       sendMessage(event);
@@ -86,6 +94,7 @@ const Chat = () => {
     }
 
     const userMessage = {
+      id: Date.now() + Math.random(), // Add unique ID
       content: input,
       sender: "user",
       timestamp: new Date().toISOString(),
@@ -123,6 +132,7 @@ const Chat = () => {
       // Simulate typing delay for better UX
       setTimeout(() => {
         const botMessage = {
+          id: Date.now() + Math.random(), // Add unique ID
           content: data.response,
           sender: "assistant",
           timestamp: new Date().toISOString(),
@@ -146,7 +156,7 @@ const Chat = () => {
     }
   };
 
-  const TypingIndicator = () => (
+  const TypingIndicator = React.memo(() => (
     <div className="message bot-message typing-indicator">
       <div className="message-content">
         <div className="typing-dots">
@@ -157,14 +167,13 @@ const Chat = () => {
         <span className="typing-text">Torko is thinking...</span>
       </div>
     </div>
-  );
+  ));
 
-  const MessageBubble = ({ message, index }) => (
+  const MessageBubble = React.memo(({ message }) => (
     <div
       className={`message ${
         message.sender === "user" ? "user-message" : "bot-message"
       }`}
-      style={{ animationDelay: `${index * 0.1}s` }}
     >
       {message.sender === "assistant" && (
         <div className="bot-avatar">
@@ -187,7 +196,7 @@ const Chat = () => {
         </div>
       )}
     </div>
-  );
+  ));
 
   return (
     <>
@@ -210,8 +219,8 @@ const Chat = () => {
             <p>How can I help you today?</p>
           </div>
 
-          {messages.map((message, index) => (
-            <MessageBubble key={index} message={message} index={index} />
+          {messages.map((message) => (
+            <MessageBubble key={message.id} message={message} />
           ))}
 
           {isTyping && <TypingIndicator />}
@@ -225,7 +234,7 @@ const Chat = () => {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleKeyDown}
+              onKeyDown={handleInputKeyDown}
               placeholder="Type your message..."
               disabled={isLoading}
               className="chat-input"

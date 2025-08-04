@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  max-height: 100%;
   max-width: 900px;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.05);
@@ -12,7 +13,9 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   animation: slideUp 0.6s ease-out;
-  transition: all 0.5s ease;
+  transition: background 0.5s ease, border 0.5s ease, box-shadow 0.5s ease;
+  position: relative;
+  flex: 1;
 }
 
 /* Dark Theme Overrides */
@@ -78,12 +81,16 @@
 .messages-container {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 25px;
   display: flex;
   flex-direction: column;
   gap: 15px;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+  min-height: 0;
+  max-height: 100%;
+  scroll-behavior: smooth;
 }
 
 .messages-container::-webkit-scrollbar {
@@ -112,7 +119,6 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: 20px;
   animation: fadeIn 1s ease-out;
-  transition: all 0.5s ease;
 }
 
 .dark-theme .welcome-message {
@@ -154,9 +160,6 @@
   align-items: flex-end;
   gap: 12px;
   max-width: 75%;
-  animation: messageSlide 0.4s ease-out forwards;
-  opacity: 0;
-  transform: translateY(20px);
 }
 
 @keyframes messageSlide {
@@ -206,8 +209,8 @@
   word-wrap: break-word;
   line-height: 1.5;
   position: relative;
-  transition: all 0.3s ease;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  text-align: left;
 }
 
 .user-message .message-content {
@@ -221,10 +224,10 @@
   color: #2c3e50;
   border-bottom-left-radius: 8px;
   backdrop-filter: blur(10px);
+  text-align: left;
 }
 
 .message-content:hover {
-  transform: translateY(-2px);
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
 }
 
@@ -294,7 +297,10 @@
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.5s ease;
+  transition: background 0.5s ease, border 0.5s ease;
+  position: relative;
+  flex-shrink: 0;
+  z-index: 10;
 }
 
 .dark-theme .input-form {
@@ -310,8 +316,8 @@
   border-radius: 25px;
   padding: 8px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  min-height: 56px;
 }
 
 .dark-theme .input-container {
@@ -321,7 +327,7 @@
 
 .input-container:focus-within {
   border-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .chat-input {
@@ -351,7 +357,7 @@
   align-items: center;
   justify-content: center;
   font-size: 1.2em;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
