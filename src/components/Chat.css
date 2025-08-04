@@ -322,7 +322,6 @@
 .input-container:focus-within {
   border-color: rgba(255, 255, 255, 0.4);
   box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
 }
 
 .chat-input {
