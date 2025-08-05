@@ -64,7 +64,7 @@ const Chat = () => {
   const createNewSession = async () => {
     try {
       console.log("Creating new session...");
-      const response = await fetch("http://localhost:5000/api/session", {
+      const response = await fetch("/api/session", {
         method: "POST",
       });
       if (!response.ok) {
@@ -111,7 +111,7 @@ const Chat = () => {
 
     try {
       console.log("Sending message:", input);
-      const response = await fetch("http://localhost:5000/api/chat", {
+      const response = await fetch("/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

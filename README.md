@@ -48,34 +48,37 @@ A beautifully designed, modern chatbot implementation using React, Flask, MongoD
 ## 📁 Project Structure
 
 ```
-Torko(AI-Chatbot)/
-├── frontend/                    # React frontend application
+Torko_AI-Chatbot/
+├── frontend/                 # React frontend application
 │   ├── src/
-│   │   ├── components/         # React components
-│   │   │   ├── Chat.js        # Main chat interface
-│   │   │   ├── Chat.css       # Chat styling
+│   │   ├── components/      # React components
+│   │   │   ├── Chat.js      # Main chat interface
+│   │   │   ├── Chat.css     # Chat styling
 │   │   │   ├── ThemeToggle.js # Dark/light theme switcher
 │   │   │   ├── KeyboardShortcuts.js # Keyboard shortcuts panel
 │   │   │   └── LoadingScreen.js # Animated loading screen
 │   │   ├── utils/
 │   │   │   └── soundManager.js # Audio feedback system
-│   │   ├── App.js             # Main application component
-│   │   └── App.css            # Global styles and animations
-│   ├── package.json           # Frontend dependencies
-│   ├── FEATURES.md           # Detailed feature documentation
-│   └── README.md             # Create React App documentation
-├── backend/                   # Flask backend application
+│   │   ├── App.js           # Main application component
+│   │   ├── App.css          # Global styles and animations
+│   │   └── index.js         # React entry point
+│   ├── public/              # Static assets
+│   ├── package.json         # Frontend dependencies
+│   └── FEATURES.md          # Detailed feature documentation
+├── backend/                 # Flask backend API
 │   ├── app/
-│   │   ├── __init__.py       # Flask app factory
-│   │   ├── routes.py         # API endpoints
-│   │   ├── services.py       # Business logic and AI integration
-│   │   ├── models.py         # Data models
-│   │   └── database.py       # MongoDB connection and configuration
-│   ├── run.py               # Application entry point
-│   └── .env                 # Environment variables (not in git)
+│   │   ├── __init__.py      # Flask app factory
+│   │   ├── routes.py        # API routes
+│   │   ├── models.py        # Data models
+│   │   ├── services.py      # Business logic
+│   │   └── database.py      # Database configuration
+│   └── run.py               # Application entry point
 ├── requirements.txt         # Python dependencies
-└── README.md               # Project documentation
+├── .gitignore              # Git ignore rules
+└── README.md               # This file
 ```
+
+## 🛠️ Development Setup
 
 ## 🚀 Setup Instructions
 

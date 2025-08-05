@@ -1,0 +1,30 @@
+{
+  "name": "torko-chatbot-fullstack",
+  "version": "1.0.0",
+  "description": "AI-Powered Chatbot with React and Flask",
+  "main": "backend/run.py",
+  "scripts": {
+    "install-frontend": "cd frontend && npm install",
+    "install-backend": "pip install -r requirements.txt",
+    "build-frontend": "cd frontend && npm run build",
+    "build": "npm run install-frontend && npm run build-frontend && npm run install-backend",
+    "start": "cd backend && gunicorn run:app",
+    "dev-frontend": "cd frontend && npm start",
+    "dev-backend": "cd backend && python run.py",
+    "dev": "concurrently \"npm run dev-backend\" \"npm run dev-frontend\""
+  },
+  "engines": {
+    "node": "18.x",
+    "python": "3.11.x"
+  },
+  "keywords": [
+    "chatbot",
+    "ai",
+    "react",
+    "flask",
+    "mongodb",
+    "gemini"
+  ],
+  "author": "Md Golam Tawhid Fahad",
+  "license": "MIT"
+}

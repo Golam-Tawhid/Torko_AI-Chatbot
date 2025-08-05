@@ -1,0 +1,12 @@
+version: 2
+services:
+  - type: web
+    name: torko-chatbot
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "cd backend && gunicorn run:app"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: NODE_VERSION
+        value: 18.19.0

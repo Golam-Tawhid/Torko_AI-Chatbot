@@ -97,3 +97,10 @@ backend/instance/
 # Temporary files
 *.tmp
 *.temp
+
+# Local deployment files
+DEPLOYMENT_SUMMARY.md
+deploy-setup.sh
+DEPLOYMENT.md
+Procfile
+.env.example
