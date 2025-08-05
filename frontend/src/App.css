@@ -88,6 +88,22 @@ main {
   flex-direction: column;
 }
 
+/* Mobile responsive adjustments for main container */
+@media (max-width: 768px) {
+  main {
+    padding: 10px;
+    height: calc(100vh - 70px);
+  }
+  
+  .App-header {
+    padding: 15px 10px;
+  }
+  
+  .App-header h1 {
+    font-size: 2rem;
+  }
+}
+
 .App-link {
   color: #61dafb;
 }
