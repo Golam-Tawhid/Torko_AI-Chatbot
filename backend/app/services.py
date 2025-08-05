@@ -214,80 +214,8 @@ class ChatService:
         if any(word in message_lower for word in ['hello', 'hi', 'hey', 'greetings']):
             return "Hello! I'm experiencing some connectivity issues with my AI service, but I'm here to help. Please try your question again in a moment."
         
-        elif any(word in message_lower for word in ['job', 'career', 'interview', 'resume', 'cse', 'computer science']):
-            return """I'd love to help you with career guidance! Unfortunately, I'm having temporary connectivity issues with my AI service. Here are some essential tips for CSE job preparation as a fresher:
-
-**📚 Technical Foundation:**
-• **Programming Languages**: Master Python, Java, or C++. Focus on one initially, then expand
-• **Data Structures & Algorithms**: Essential for interviews - practice on LeetCode, HackerRank, CodeChef
-• **Database Knowledge**: Learn SQL, understand RDBMS concepts
-• **Version Control**: Get comfortable with Git and GitHub
-
-**💼 Practical Experience:**
-• **Projects**: Build 3-4 substantial projects showcasing different skills
-• **GitHub Portfolio**: Maintain clean, well-documented repositories
-• **Internships**: Apply for internships, even unpaid ones for experience
-• **Open Source**: Contribute to open-source projects
-
-**🎯 Interview Preparation:**
-• **Coding Practice**: Solve 150+ coding problems across difficulty levels
-• **System Design**: Learn basics of scalable system design
-• **Behavioral Questions**: Prepare STAR method responses
-• **Mock Interviews**: Practice with peers or online platforms
-
-**🌐 Professional Development:**
-• **LinkedIn**: Build a professional profile, connect with industry professionals
-• **Resume**: Keep it concise, highlight projects and technical skills
-• **Networking**: Attend tech meetups, conferences, webinars
-• **Continuous Learning**: Stay updated with latest technologies
-
-**🏢 Job Search Strategy:**
-• **Campus Placements**: Prepare thoroughly for your college placement season
-• **Job Portals**: Use Naukri, LinkedIn Jobs, AngelList for startups
-• **Company Research**: Target companies that match your interests
-• **Referrals**: Leverage your network for referrals
-
-Start with fundamentals and gradually build complexity. Consistency is key!
-
-Please try your question again in a moment for a more personalized response!"""
-        
-        elif any(word in message_lower for word in ['what', 'explain', 'define', 'ai', 'artificial intelligence']):
-            if 'ai' in message_lower or 'artificial intelligence' in message_lower:
-                return """**What is Artificial Intelligence (AI)?**
-
-AI is a branch of computer science that focuses on creating systems capable of performing tasks that typically require human intelligence. Here's a comprehensive overview:
-
-**🧠 Core Concepts:**
-• **Machine Learning**: Systems that learn and improve from data without explicit programming
-• **Deep Learning**: Neural networks with multiple layers that mimic brain structure
-• **Natural Language Processing**: Understanding and generating human language
-• **Computer Vision**: Interpreting and analyzing visual information
-
-**🔧 Types of AI:**
-• **Narrow AI**: Designed for specific tasks (like Siri, recommendation systems)
-• **General AI**: Hypothetical AI with human-level intelligence across domains
-• **Superintelligence**: AI that surpasses human intelligence (theoretical)
-
-**💡 Applications:**
-• **Healthcare**: Diagnosis, drug discovery, personalized treatment
-• **Finance**: Fraud detection, algorithmic trading, risk assessment
-• **Transportation**: Autonomous vehicles, traffic optimization
-• **Entertainment**: Content recommendation, game AI, content creation
-• **Business**: Chatbots, process automation, predictive analytics
-
-**⚡ Current Technologies:**
-• **Large Language Models**: GPT, BERT, Gemini for text processing
-• **Computer Vision**: Object recognition, facial recognition, medical imaging
-• **Robotics**: Industrial automation, service robots, autonomous systems
-
-**🚀 Career Opportunities:**
-• Machine Learning Engineer, Data Scientist, AI Researcher, NLP Engineer, Computer Vision Engineer
-
-AI is transforming every industry and creating new possibilities for solving complex problems!
-
-I'm currently experiencing connectivity issues with my AI service. Please try again for a more detailed, personalized explanation!"""
-            else:
-                return f"I'd be happy to explain that! I'm currently experiencing connectivity issues with my AI service. Your question was: '{message}'. Please try again in a moment for a detailed explanation."
+        elif any(word in message_lower for word in ['what', 'explain', 'define', 'how', 'why', 'when', 'where']):
+            return f"I understand you're looking for an explanation or information about something. I'm currently experiencing connectivity issues with my AI service. Your question was: '{message}'. Please try again in a moment for a detailed and comprehensive response!"
         
         elif any(word in message_lower for word in ['help', 'support', 'assist']):
             return "I'm here to help! I'm currently experiencing some technical difficulties with my AI service, but I should be back to full functionality soon. Please try your question again in a moment."
