@@ -93,6 +93,7 @@ main {
   main {
     padding: 10px;
     height: calc(100vh - 70px);
+    height: calc(100dvh - 70px); /* Use dynamic viewport height */
   }
   
   .App-header {
@@ -101,6 +102,11 @@ main {
   
   .App-header h1 {
     font-size: 2rem;
+  }
+  
+  /* Ensure no element blocks the input area */
+  .App::before {
+    z-index: 1;
   }
 }
 
